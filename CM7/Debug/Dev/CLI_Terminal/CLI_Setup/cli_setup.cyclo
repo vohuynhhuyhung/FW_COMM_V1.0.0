@@ -1,0 +1,3 @@
+../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:63:13:writeCharTocli_COMM_UART	1
+../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:68:16:SystemCLI_Init	2
+../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:127:14:get_COMM_UART_CliPointer	1

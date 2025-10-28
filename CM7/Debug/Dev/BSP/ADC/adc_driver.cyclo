@@ -1,0 +1,6 @@
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h:7037:22:LL_ADC_REG_StartConversion	1
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h:7113:26:LL_ADC_REG_ReadConversionData16	1
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h:7473:26:LL_ADC_IsActiveFlag_EOC	2
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h:7608:22:LL_ADC_ClearFlag_EOC	1
+../Dev/BSP/ADC/adc_driver.c:15:10:ADC2_Read	2
+../Dev/BSP/ADC/adc_driver.c:29:10:ADC1_ReadIndex	7

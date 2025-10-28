@@ -1,0 +1,2 @@
+../Dev/ThirdParty/libcsp/src/arch/freertos/csp_clock.c:24:28:csp_clock_get_time	16	static
+../Dev/ThirdParty/libcsp/src/arch/freertos/csp_clock.c:29:27:csp_clock_set_time	16	static
