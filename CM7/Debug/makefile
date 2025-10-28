@@ -72,6 +72,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 COMM_HW100_CM7.list \
 
+OBJCOPY_HEX += \
+COMM_HW100_CM7.hex \
+
+OBJCOPY_BIN += \
+COMM_HW100_CM7.bin \
+
 
 # All Target
 all: main-build
@@ -95,12 +101,22 @@ COMM_HW100_CM7.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+COMM_HW100_CM7.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "COMM_HW100_CM7.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+COMM_HW100_CM7.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "COMM_HW100_CM7.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) COMM_HW100_CM7.elf COMM_HW100_CM7.list COMM_HW100_CM7.map default.size.stdout
+	-$(RM) COMM_HW100_CM7.bin COMM_HW100_CM7.elf COMM_HW100_CM7.hex COMM_HW100_CM7.list COMM_HW100_CM7.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
