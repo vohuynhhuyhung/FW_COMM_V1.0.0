@@ -109,12 +109,15 @@ static void MX_ADC2_Init(void);
 /* USER CODE BEGIN 0 */
 static void blink( void * parameters )
 {
-    ( void ) parameters;
-
+    LL_GPIO_SetOutputPin(LED_G_GPIO_Port, LED_G_Pin);
     for( ; ; )
     {
-    	LL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
-        vTaskDelay( 500 );
+//    	LL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
+//        vTaskDelay( 500 );
+	    LL_GPIO_ResetOutputPin(LED_B_GPIO_Port, LED_B_Pin);
+	    vTaskDelay(pdMS_TO_TICKS(300));
+	    LL_GPIO_SetOutputPin(LED_B_GPIO_Port, LED_B_Pin);
+	    vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
 
