@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#include "usbd_cdc_if.h"
+#include "usbd_cdc_if.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "semphr.h"
@@ -19,19 +19,29 @@
 #include "../../BSP/USB_CDC/cdc_driver.h"
 #include "csp.h"
 #include "adc_driver.h"
+#include "spi_driver.h"
+
+#include "ff.h"
+#include "diskio.h"
+
 
 
 
 /*************************************************
  *                Private typedef                 *
  *************************************************/
- csp_conn_t *conn;
-/*************************************************
- *                Private function                 *
- *************************************************/
-
+csp_conn_t *conn;
 /*************************************************
  *                Private variable                 *
+ *************************************************/
+FATFS fs;
+FIL file;
+FRESULT res;
+DIR dir;
+FILINFO fno;
+
+/*************************************************
+ *                Private function                 *
  *************************************************/
 
 
@@ -46,10 +56,20 @@
 static void CMD_Clear_CLI(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Ping(EmbeddedCli *cli, char *args, void *context);
-static void CMD_Send(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Send_CSP(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Close(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Get_Temperature(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Get_Current(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Send_LVDS(EmbeddedCli *cli, char *args, void *context);
+
+static void CMD_Create_Folder(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Create_File(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Change_Directory(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Print_Working_Directory(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Write_eMMC(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Read_eMMC(EmbeddedCli *cli, char *args, void *context);
+static void CMD_List(EmbeddedCli *cli, char *args, void *context);
+
 /*************************************************
  *                 Command  Array                *
  *************************************************/
@@ -64,14 +84,22 @@ static void CMD_Get_Current(EmbeddedCli *cli, char *args, void *context);
 
 static const CliCommandBinding cliStaticBindings_internal[] = {
     // Common
-    { "Ultis", "help",         "Print list of all available CLI commands [Firmware: 1]", false,  NULL, CMD_Help },
-    { "Ultis", "cls",          "Clear the console output screen",                        false,  NULL, CMD_Clear_CLI },
-    { "Ultis", "reset",        "Perform MCU software reset",                             false,  NULL, CMD_Reset },
+    { "Ultis", "help",         "Print list of all available CLI commands [Firmware: 1]", false, NULL, CMD_Help },
+    { "Ultis", "cls",          "Clear the console output screen",                        false, NULL, CMD_Clear_CLI },
+    { "Ultis", "reset",        "Perform MCU software reset",                             false, NULL, CMD_Reset },
 	{ "Ultis", "csp_ping",	   "Connect to dst/port.",                       			 true,  NULL, CMD_Ping },
-	{ "Ultis", "csp_send",     "CSP Send",                         						 true,  NULL, CMD_Send },
-	{ "Ultis", "csp_close",    "Close connect CSP",                         			 false,  NULL, CMD_Close },
+	{ "Ultis", "csp_send",     "CSP Send",                         						 true,  NULL, CMD_Send_CSP },
+	{ "Ultis", "csp_close",    "Close connect CSP",                         			 false, NULL, CMD_Close },
+	{ "Ultis", "lvds_send",    "LVDS Send",                         					 true,  NULL, CMD_Send_LVDS },
 	{ "Ultis", "get_temp",     "Get board temperature",                         		 true,  NULL, CMD_Get_Temperature },
-	{ "Ultis", "get_current",     "Get board current",                         			 false,  NULL, CMD_Get_Current },
+	{ "Ultis", "get_current",  "Get board current",                         			 false, NULL, CMD_Get_Current },
+	{ "Ultis", "mkdir",   	   "Create Folder",                         			 	 true,  NULL, CMD_Create_Folder },
+	{ "Ultis", "touch",   	   "Create File",                         			 		 true,  NULL, CMD_Create_File },
+	{ "Ultis", "cd",   	   	   "Change Directory",                         			 	 true,  NULL, CMD_Change_Directory },
+	{ "Ultis", "pwd",   	   "Print Working Directory",                         		 false, NULL, CMD_Print_Working_Directory },
+	{ "Ultis", "write_eMMC",   "Write eMMC",                         			 		 true,  NULL, CMD_Write_eMMC },
+	{ "Ultis", "read_eMMC",    "Read eMMC",                         			 		 true,  NULL, CMD_Read_eMMC },
+	{ "Ultis", "ls",    	   "List File",                         			 		 false, NULL, CMD_List },
 };
 
 /*************************************************
@@ -128,7 +156,7 @@ static void CMD_Ping(EmbeddedCli *cli, char *args, void *context) {
     embeddedCliPrint(cli, out);
 }
 
-static void CMD_Send(EmbeddedCli *cli, char *args, void *context) {
+static void CMD_Send_CSP(EmbeddedCli *cli, char *args, void *context) {
     (void) context;
 
     uint16_t tok_count = embeddedCliGetTokenCount(args);
@@ -177,15 +205,34 @@ static void CMD_Send(EmbeddedCli *cli, char *args, void *context) {
         return;
     }
 
-    size_t off = 0;
-    for (uint16_t i = 3; i <= tok_count; ++i) {
-        const char *tk = embeddedCliGetToken(args, i);
-        size_t l = strlen(tk);
-        memcpy(&pkt->data[off], tk, l);
-        off += l;
-        if (i != tok_count) pkt->data[off++] = ' ';
+    const char *hex_str = embeddedCliGetToken(args, 3);
+    size_t hex_len = strlen(hex_str);
+
+    if (hex_len % 2 != 0) {
+        embeddedCliPrint(cli, "Invalid hex string: odd number of digits");
+        csp_close(conn);
+        csp_buffer_free(pkt);
+        return;
     }
-    pkt->length = (uint16_t) msg_len;
+
+    pkt->length = (uint16_t)(hex_len / 2);
+
+    for (size_t i = 0; i < pkt->length; i++) {
+        char byte_str[3] = { hex_str[i*2], hex_str[i*2 + 1], '\0' };
+        unsigned int byte_val = 0;
+        if (sscanf(byte_str, "%2x", &byte_val) != 1) {
+            embeddedCliPrint(cli, "Invalid hex digit");
+            csp_close(conn);
+            csp_buffer_free(pkt);
+            return;
+        }
+        pkt->data[i] = (uint8_t)byte_val;
+    }
+//	const char *tk = embeddedCliGetToken(args, i);
+//	size_t l = strlen(tk);
+//	memcpy(&pkt->data[off], tk, l);
+//	off += l;
+//	if (i != tok_count) pkt->data[off++] = ' ';
 
     if (csp_send(conn, pkt, 1000) == CSP_ERR_NONE) {
         csp_buffer_free(pkt);
@@ -207,7 +254,7 @@ static void CMD_Send(EmbeddedCli *cli, char *args, void *context) {
     csp_close(conn);
 
     char out2[64];
-    snprintf(out2, sizeof(out2), "Sent %u bytes", (unsigned)msg_len);
+    snprintf(out2, sizeof(out2), "Sent %u bytes", (unsigned)pkt->length);
     embeddedCliPrint(cli, out2);
 }
 
@@ -257,6 +304,194 @@ static void CMD_Get_Current(EmbeddedCli *cli, char *args, void *context){
     embeddedCliPrint(cli, buf);
 }
 
+static void CMD_Send_LVDS(EmbeddedCli *cli, char *args, void *context){
+
+//	uint8_t data[0];
+//    const char *hex_str = embeddedCliGetToken(args, 1);
+//    size_t hex_len = strlen(hex_str);
+//
+//    if (hex_len % 2 != 0) {
+//        embeddedCliPrint(cli, "Invalid hex string: odd number of digits");
+//        return;
+//    }
+//
+//    size_t len;
+//    len = (uint16_t)(hex_len / 2);
+//
+//    for (size_t i = 0; i < len; i++) {
+//        char byte_str[3] = { hex_str[i*2], hex_str[i*2 + 1], '\0' };
+//        unsigned int byte_val = 0;
+//        if (sscanf(byte_str, "%2x", &byte_val) != 1) {
+//            embeddedCliPrint(cli, "Invalid hex digit");
+//            return;
+//        }
+//        data[i] = (uint8_t)byte_val;
+//    }
+
+//    spi_ll_tx_hdtx(SPI1, payload, sizeof(payload));
+
+	SPI_Transmit(SPI2,0xAA);
+}
+
+static void CMD_Create_Folder(EmbeddedCli *cli, char *args, void *context){
+	char buf[64];
+
+    uint16_t tok_count = embeddedCliGetTokenCount(args);
+    if (tok_count < 1) {
+        embeddedCliPrint(cli, "Usage: create_folder <name>\r\n");
+        return;
+    }
+
+    const char *foldername = embeddedCliGetToken(args, 1);
+
+    res = f_mkdir(foldername);
+    if (res == FR_OK){
+        snprintf(buf, sizeof(buf), "Folder created: %s\r\n", foldername);
+        embeddedCliPrint(cli, buf);
+    } else {
+        snprintf(buf, sizeof(buf), "f_mkdir failed: %d\r\n", res);
+        embeddedCliPrint(cli, buf);
+    }
+}
+
+static void CMD_Create_File(EmbeddedCli *cli, char *args, void *context){
+	char buf[64];
+
+    uint16_t tok_count = embeddedCliGetTokenCount(args);
+    if (tok_count < 1) {
+        embeddedCliPrint(cli, "Usage: create_file <name>\r\n");
+        return;
+    }
+
+    const char *filename = embeddedCliGetToken(args, 1);
+
+    res = f_open(&file, filename, FA_CREATE_ALWAYS | FA_WRITE);
+    if (res == FR_OK){
+        snprintf(buf, sizeof(buf), "File created: %s\r\n", filename);
+        embeddedCliPrint(cli, buf);
+    } else {
+        snprintf(buf, sizeof(buf), "f_open failed: %d\r\n", res);
+        embeddedCliPrint(cli, buf);
+    }
+
+}
+
+static void CMD_Write_eMMC(EmbeddedCli *cli, char *args, void *context){
+
+	if (res == FR_OK) {
+	    UINT bytes;
+	    f_write(&file, "Hello eMMC!\r\n", 13, &bytes);
+	    f_close(&file);
+
+	    char out2[64];
+	    snprintf(out2, sizeof(out2), "Write %u bytes to File", bytes);
+	    embeddedCliPrint(cli, out2);
+	} else {
+		embeddedCliPrint(cli, "f_open failed");
+	}
+}
+
+static void CMD_Read_eMMC(EmbeddedCli *cli, char *args, void *context){
+
+	res = f_open(&file, "test.txt", FA_READ);
+	if (res == FR_OK) {
+	    char buf[32];
+	    UINT br;
+	    f_read(&file, buf, sizeof(buf) - 1, &br);
+	    buf[br] = 0;
+	    embeddedCliPrint(cli, buf);
+	    f_close(&file);
+	} else {
+		embeddedCliPrint(cli, "f_open (read) failed");
+	}
+
+}
+
+static void CMD_List(EmbeddedCli *cli, char *args, void *context) {
+    FRESULT fr;
+    DIR dir;
+    FILINFO fno;
+
+    char path[256];
+    char msg[320];
+
+    uint16_t tok_count = embeddedCliGetTokenCount(args);
+    if (tok_count >= 1) {
+        const char *userPath = embeddedCliGetToken(args, 1);
+        if (userPath && *userPath) {
+            snprintf(path, sizeof(path), "%s", userPath);
+        } else {
+            snprintf(path, sizeof(path), ".");
+        }
+    } else {
+        snprintf(path, sizeof(path), ".");
+    }
+
+    fr = f_opendir(&dir, path);
+    if (fr != FR_OK) {
+        snprintf(msg, sizeof(msg), "Cannot open '%s' (err=%d)\r\n", path, fr);
+        embeddedCliPrint(cli, msg);
+        return;
+    }
+
+#if FF_FS_RPATH
+    {
+        char cwd[256];
+        if (f_getcwd(cwd, sizeof(cwd)) == FR_OK) {
+            snprintf(msg, sizeof(msg), "Directory: %s\r\n", cwd);
+        } else {
+            snprintf(msg, sizeof(msg), "Directory: (unknown)\r\n");
+        }
+        embeddedCliPrint(cli, msg);
+    }
+#endif
+
+    for (;;) {
+        fr = f_readdir(&dir, &fno);
+        if (fr != FR_OK || fno.fname[0] == 0)
+            break;
+
+        if (fno.fattrib & (AM_HID | AM_SYS))
+            continue;
+
+        if (fno.fattrib & AM_DIR) {
+            snprintf(msg, sizeof(msg), "<DIR>          %.200s\r\n", fno.fname);
+        } else {
+            snprintf(msg, sizeof(msg), "%10lu  %.200s\r\n", (unsigned long)fno.fsize, fno.fname);
+        }
+        embeddedCliPrint(cli, msg);
+    }
+
+    f_closedir(&dir);
+}
+
+static void CMD_Change_Directory(EmbeddedCli *cli, char *args, void *context){
+    (void)context;
+    uint16_t n = embeddedCliGetTokenCount(args);
+    if (n < 1) {
+        f_chdir("0:/");
+        return;
+    }
+
+    const char *path = embeddedCliGetToken(args, 1);
+    FRESULT res = f_chdir(path);
+    if (res != FR_OK) {
+        char msg[128];
+        snprintf(msg, sizeof(msg), "cd: %s: No such file or directory\r\n", path);
+        embeddedCliPrint(cli, msg);
+    }
+}
+
+static void CMD_Print_Working_Directory(EmbeddedCli *cli, char *args, void *context){
+    (void)args;
+    (void)context;
+    char buf[256];
+
+    if (f_getcwd(buf, sizeof(buf)) == FR_OK)
+        embeddedCliPrint(cli, buf), embeddedCliPrint(cli, "\r\n");
+    else
+        embeddedCliPrint(cli, "(error reading current directory)\r\n");
+}
 /*************************************************
  *                  End CMD List                 *
  *************************************************/

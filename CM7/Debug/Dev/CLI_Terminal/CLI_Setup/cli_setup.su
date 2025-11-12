@@ -1,3 +1,5 @@
+../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:56:13:writeCharTocli_COMM_USB	24	static
 ../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:63:13:writeCharTocli_COMM_UART	24	static
 ../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:68:16:SystemCLI_Init	16	static
+../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:123:14:get_COMM_USB_CliPointer	4	static
 ../Dev/CLI_Terminal/CLI_Setup/cli_setup.c:127:14:get_COMM_UART_CliPointer	4	static

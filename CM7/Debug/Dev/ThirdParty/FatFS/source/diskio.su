@@ -1,0 +1,5 @@
+../Dev/ThirdParty/FatFS/source/diskio.c:64:9:disk_status	16	static
+../Dev/ThirdParty/FatFS/source/diskio.c:111:9:disk_initialize	16	static
+../Dev/ThirdParty/FatFS/source/diskio.c:177:9:disk_read	32	static
+../Dev/ThirdParty/FatFS/source/diskio.c:243:9:disk_write	32	static
+../Dev/ThirdParty/FatFS/source/diskio.c:295:9:disk_ioctl	48	static

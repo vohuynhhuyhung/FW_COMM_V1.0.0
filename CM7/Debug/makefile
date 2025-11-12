@@ -9,6 +9,9 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include USB_DEVICE/Target/subdir.mk
+-include USB_DEVICE/App/subdir.mk
+-include Middlewares/ST/STM32_USB_Device_Library/subdir.mk
 -include Drivers/STM32H7xx_HAL_Driver/subdir.mk
 -include Dev/Util/RingBuffer/subdir.mk
 -include Dev/ThirdParty/libcsp/src/transport/subdir.mk
@@ -19,6 +22,7 @@ RM := rm -rf
 -include Dev/ThirdParty/libcsp/src/arch/freertos/subdir.mk
 -include Dev/ThirdParty/libcsp/src/arch/subdir.mk
 -include Dev/ThirdParty/libcsp/src/subdir.mk
+-include Dev/ThirdParty/FatFS/source/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/MemMang/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM7/r0p1/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/subdir.mk
@@ -28,6 +32,7 @@ RM := rm -rf
 -include Dev/CLI_Terminal/CLI_Command/subdir.mk
 -include Dev/BSP/USB_CDC/subdir.mk
 -include Dev/BSP/UART/subdir.mk
+-include Dev/BSP/SPI/subdir.mk
 -include Dev/BSP/ADC/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk

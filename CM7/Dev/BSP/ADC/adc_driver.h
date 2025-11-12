@@ -23,8 +23,6 @@ typedef struct {
 } temp_reply_t;
 
 
-extern volatile adc_triplet_t g_adc_latest;
-
-void ADC1_Read(adc_triplet_t *out);
+uint16_t ADC2_Read();
 uint16_t ADC1_ReadIndex(uint8_t index);
 #endif /* BSP_ADC_ADC_DRIVER_H_ */

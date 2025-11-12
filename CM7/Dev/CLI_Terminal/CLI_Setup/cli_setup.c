@@ -17,7 +17,7 @@
 #include "cli_command.h"
 
 #include "../../BSP/USB_CDC/cdc_driver.h"
-//#include "usbd_cdc_if.h"
+#include "usbd_cdc_if.h"
 
 #include "FreeRTOS.h"
 #include "queue.h"
@@ -32,8 +32,8 @@
  *           CLI Static Buffer Define            *
  *************************************************/
 
-//#define COMM_USB_CLI_BUFFER_SIZE			2048
-//static  CLI_UINT	COMM_USB_cliStaticBuffer[BYTES_TO_CLI_UINTS(COMM_USB_CLI_BUFFER_SIZE)];
+#define COMM_USB_CLI_BUFFER_SIZE			2048
+static  CLI_UINT	COMM_USB_cliStaticBuffer[BYTES_TO_CLI_UINTS(COMM_USB_CLI_BUFFER_SIZE)];
 
 #define COMM_UART_CLI_BUFFER_SIZE			2048
 static  CLI_UINT	COMM_UART_cliStaticBuffer[BYTES_TO_CLI_UINTS(COMM_UART_CLI_BUFFER_SIZE)];
@@ -53,12 +53,12 @@ static _Bool cliIsReady = false;
 /*************************************************
  *          Tx Transmit CLI Byte Buffer          *
  *************************************************/
-//static void writeCharTocli_COMM_USB(EmbeddedCli *embeddedCli, char c) {
-//    uint8_t b = (uint8_t)c;
-//    while (CDC_Transmit_HS(&b, 1) == USBD_BUSY) {
-//    	vTaskDelay(1);
-//    }
-//}
+static void writeCharTocli_COMM_USB(EmbeddedCli *embeddedCli, char c) {
+    uint8_t b = (uint8_t)c;
+    while (CDC_Transmit_HS(&b, 1) == USBD_BUSY) {
+    	vTaskDelay(1);
+    }
+}
 
 static void writeCharTocli_COMM_UART(EmbeddedCli *embeddedCli, char c) {
     uint8_t b = c;
@@ -69,23 +69,23 @@ Std_ReturnType SystemCLI_Init() {
 	/* Initialize the CLI configuration settings */
 
     // Initialize COMM USB CLI
-//    EmbeddedCliConfig *COMM_USB_Config = embeddedCliDefaultConfig();
-//    COMM_USB_Config->cliBuffer = COMM_USB_cliStaticBuffer;
-//    COMM_USB_Config->cliBufferSize = COMM_USB_CLI_BUFFER_SIZE;
-//    COMM_USB_Config->rxBufferSize = CLI_RX_BUFFER_SIZE;
-//    COMM_USB_Config->cmdBufferSize = CLI_CMD_BUFFER_SIZE;
-//    COMM_USB_Config->historyBufferSize = CLI_HISTORY_SIZE;
-//    COMM_USB_Config->maxBindingCount = CLI_MAX_BINDING_COUNT;
-//    COMM_USB_Config->enableAutoComplete = CLI_AUTO_COMPLETE;
-//    COMM_USB_Config->invitation = CLI_INITATION_COMM_USB;
-//    COMM_USB_Config->staticBindings = getCliStaticBindings();
-//    COMM_USB_Config->staticBindingCount = getCliStaticBindingCount();
-//
-//    cli_COMM_USB = embeddedCliNew(COMM_USB_Config);
-//    if (cli_COMM_USB == NULL) {
-//        return E_ERROR;
-//    }
-//    cli_COMM_USB->writeChar = writeCharTocli_COMM_USB;
+    EmbeddedCliConfig *COMM_USB_Config = embeddedCliDefaultConfig();
+    COMM_USB_Config->cliBuffer = COMM_USB_cliStaticBuffer;
+    COMM_USB_Config->cliBufferSize = COMM_USB_CLI_BUFFER_SIZE;
+    COMM_USB_Config->rxBufferSize = CLI_RX_BUFFER_SIZE;
+    COMM_USB_Config->cmdBufferSize = CLI_CMD_BUFFER_SIZE;
+    COMM_USB_Config->historyBufferSize = CLI_HISTORY_SIZE;
+    COMM_USB_Config->maxBindingCount = CLI_MAX_BINDING_COUNT;
+    COMM_USB_Config->enableAutoComplete = CLI_AUTO_COMPLETE;
+    COMM_USB_Config->invitation = CLI_INITATION_COMM_USB;
+    COMM_USB_Config->staticBindings = getCliStaticBindings();
+    COMM_USB_Config->staticBindingCount = getCliStaticBindingCount();
+
+    cli_COMM_USB = embeddedCliNew(COMM_USB_Config);
+    if (cli_COMM_USB == NULL) {
+        return E_ERROR;
+    }
+    cli_COMM_USB->writeChar = writeCharTocli_COMM_USB;
 
     // Initialize COMM UART CLi
     EmbeddedCliConfig *COMM_UART_config = embeddedCliDefaultConfig();
@@ -120,9 +120,9 @@ Std_ReturnType SystemCLI_Init() {
  *             Get CLI Pointers                  *
  *************************************************/
 
-//EmbeddedCli *get_COMM_USB_CliPointer() {
-//    return cli_COMM_USB;
-//}
+EmbeddedCli *get_COMM_USB_CliPointer() {
+    return cli_COMM_USB;
+}
 
 EmbeddedCli *get_COMM_UART_CliPointer() {
     return cli_COMM_UART;

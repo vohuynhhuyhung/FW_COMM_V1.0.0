@@ -1,0 +1,14 @@
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h:884:22:LL_GPIO_SetOutputPin	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_bus.h:1384:22:LL_AHB4_GRP1_EnableClock	24	static
+../Core/Src/main.c:78:19:FMC_init	40	static
+../Core/Src/main.c:134:6:SDRAM_Clear	16	static
+../Core/Src/main.c:142:6:SDRAM_WriteIncrement_bytes	16	static
+../Core/Src/main.c:150:6:SDRAM_WriteIncrement_words	16	static
+../Core/Src/main.c:158:6:SDRAM_WriteIncrement_dwords	16	static
+../Core/Src/main.c:166:6:SDRAM_Fill32	24	static
+../Core/Src/main.c:175:6:FMC_Test	16	static
+../Core/Src/main.c:220:5:main	8	static
+../Core/Src/main.c:296:6:PeriphCommonClock_Config	200	static
+../Core/Src/main.c:319:6:MX_FMC_Init	40	static
+../Core/Src/main.c:370:13:MX_GPIO_Init	32	static
+../Core/Src/main.c:409:6:Error_Handler	4	static,ignoring_inline_asm

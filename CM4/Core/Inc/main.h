@@ -72,16 +72,6 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define SRAM_CS_Pin LL_GPIO_PIN_4
 #define SRAM_CS_GPIO_Port GPIOD
-#define LVDS_SCK_Pin LL_GPIO_PIN_11
-#define LVDS_SCK_GPIO_Port GPIOG
-#define SRAM_SCK_Pin LL_GPIO_PIN_3
-#define SRAM_SCK_GPIO_Port GPIOD
-#define LVDS_MOSI_Pin LL_GPIO_PIN_7
-#define LVDS_MOSI_GPIO_Port GPIOD
-#define SRAM_MOSI_Pin LL_GPIO_PIN_1
-#define SRAM_MOSI_GPIO_Port GPIOC
-#define SRAM_MISO_Pin LL_GPIO_PIN_2
-#define SRAM_MISO_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

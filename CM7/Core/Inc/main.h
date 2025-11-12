@@ -28,6 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal.h"
+
 #include "stm32h7xx_ll_adc.h"
 #include "stm32h7xx_ll_i2c.h"
 #include "stm32h7xx_ll_rcc.h"
@@ -70,6 +71,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define LVDS_SCK_Pin LL_GPIO_PIN_11
+#define LVDS_SCK_GPIO_Port GPIOG
+#define SRAM_SCK_Pin LL_GPIO_PIN_3
+#define SRAM_SCK_GPIO_Port GPIOD
+#define LVDS_MOSI_Pin LL_GPIO_PIN_7
+#define LVDS_MOSI_GPIO_Port GPIOD
+#define SRAM_MOSI_Pin LL_GPIO_PIN_1
+#define SRAM_MOSI_GPIO_Port GPIOC
+#define SRAM_MISO_Pin LL_GPIO_PIN_2
+#define SRAM_MISO_GPIO_Port GPIOC
 #define WD_DONE_Pin LL_GPIO_PIN_13
 #define WD_DONE_GPIO_Port GPIOD
 #define LED_B_Pin LL_GPIO_PIN_3

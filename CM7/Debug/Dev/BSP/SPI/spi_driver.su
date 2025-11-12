@@ -1,0 +1,10 @@
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:799:22:LL_SPI_SetTransferSize	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:997:22:LL_SPI_StartMasterTransfer	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:1709:26:LL_SPI_IsActiveFlag_TXP	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:1731:26:LL_SPI_IsActiveFlag_EOT	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:1742:26:LL_SPI_IsActiveFlag_TXTF	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:1878:22:LL_SPI_ClearFlag_EOT	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:1889:22:LL_SPI_ClearFlag_TXTF	16	static
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_spi.h:2489:22:LL_SPI_TransmitData8	16	static
+../Dev/BSP/SPI/spi_driver.c:7:6:SPI_Transmit	16	static
+../Dev/BSP/SPI/spi_driver.c:13:5:spi_ll_tx_hdtx	32	static

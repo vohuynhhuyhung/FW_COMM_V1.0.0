@@ -1,0 +1,14 @@
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h:884:22:LL_GPIO_SetOutputPin	1
+../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_bus.h:1384:22:LL_AHB4_GRP1_EnableClock	1
+../Core/Src/main.c:78:19:FMC_init	7
+../Core/Src/main.c:134:6:SDRAM_Clear	2
+../Core/Src/main.c:142:6:SDRAM_WriteIncrement_bytes	2
+../Core/Src/main.c:150:6:SDRAM_WriteIncrement_words	2
+../Core/Src/main.c:158:6:SDRAM_WriteIncrement_dwords	2
+../Core/Src/main.c:166:6:SDRAM_Fill32	2
+../Core/Src/main.c:175:6:FMC_Test	1
+../Core/Src/main.c:220:5:main	1
+../Core/Src/main.c:296:6:PeriphCommonClock_Config	2
+../Core/Src/main.c:319:6:MX_FMC_Init	2
+../Core/Src/main.c:370:13:MX_GPIO_Init	1
+../Core/Src/main.c:409:6:Error_Handler	1
