@@ -39,11 +39,40 @@ FIL file;
 FRESULT res;
 DIR dir;
 FILINFO fno;
+UINT bw;
 
 /*************************************************
  *                Private function                 *
  *************************************************/
+static FRESULT delete_recursive(const char *path)
+{
+    FRESULT fr;
+    char child[256];
 
+    fr = f_opendir(&dir, path);
+    if (fr != FR_OK) return fr;
+
+    for (;;) {
+        fr = f_readdir(&dir, &fno);
+        if (fr != FR_OK || fno.fname[0] == 0) break;
+
+        if (!strcmp(fno.fname, ".") || !strcmp(fno.fname, ".."))
+            continue;
+
+        snprintf(child, sizeof(child), "%s/%.200s", path, fno.fname);
+
+        if (fno.fattrib & AM_DIR) {
+            fr = delete_recursive(child);
+            if (fr != FR_OK) break;
+        } else {
+            f_unlink(child);
+        }
+    }
+
+    f_closedir(&dir);
+
+    return f_unlink(path);
+}
 
 /*************************************************
  *                Command Define                 *
@@ -66,6 +95,7 @@ static void CMD_Create_Folder(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Create_File(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Change_Directory(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Print_Working_Directory(EmbeddedCli *cli, char *args, void *context);
+static void CMD_Remove(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Write_eMMC(EmbeddedCli *cli, char *args, void *context);
 static void CMD_Read_eMMC(EmbeddedCli *cli, char *args, void *context);
 static void CMD_List(EmbeddedCli *cli, char *args, void *context);
@@ -93,12 +123,14 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
 	{ "Ultis", "lvds_send",    "LVDS Send",                         					 true,  NULL, CMD_Send_LVDS },
 	{ "Ultis", "get_temp",     "Get board temperature",                         		 true,  NULL, CMD_Get_Temperature },
 	{ "Ultis", "get_current",  "Get board current",                         			 false, NULL, CMD_Get_Current },
+
 	{ "Ultis", "mkdir",   	   "Create Folder",                         			 	 true,  NULL, CMD_Create_Folder },
 	{ "Ultis", "touch",   	   "Create File",                         			 		 true,  NULL, CMD_Create_File },
 	{ "Ultis", "cd",   	   	   "Change Directory",                         			 	 true,  NULL, CMD_Change_Directory },
 	{ "Ultis", "pwd",   	   "Print Working Directory",                         		 false, NULL, CMD_Print_Working_Directory },
-	{ "Ultis", "write_eMMC",   "Write eMMC",                         			 		 true,  NULL, CMD_Write_eMMC },
-	{ "Ultis", "read_eMMC",    "Read eMMC",                         			 		 true,  NULL, CMD_Read_eMMC },
+	{ "Ultis", "rm",   	   	   "Remove file,folder",                         		 	 true,  NULL, CMD_Remove },
+	{ "Ultis", "echo",   	   "Write eMMC",                         			 		 true,  NULL, CMD_Write_eMMC },
+	{ "Ultis", "cat",    	   "Read eMMC",                         			 		 true,  NULL, CMD_Read_eMMC },
 	{ "Ultis", "ls",    	   "List File",                         			 		 false, NULL, CMD_List },
 };
 
@@ -377,40 +409,97 @@ static void CMD_Create_File(EmbeddedCli *cli, char *args, void *context){
 }
 
 static void CMD_Write_eMMC(EmbeddedCli *cli, char *args, void *context){
+	(void)context;
+	char msg[80];
+	UINT bw;
 
-	if (res == FR_OK) {
-	    UINT bytes;
-	    f_write(&file, "Hello eMMC!\r\n", 13, &bytes);
-	    f_close(&file);
-
-	    char out2[64];
-	    snprintf(out2, sizeof(out2), "Write %u bytes to File", bytes);
-	    embeddedCliPrint(cli, out2);
-	} else {
-		embeddedCliPrint(cli, "f_open failed");
+	uint16_t tok_count = embeddedCliGetTokenCount(args);
+	if (tok_count < 3) {
+		embeddedCliPrint(cli, "Usage: echo [data] [>] [>>] <path>\r\n");
+		return;
 	}
+
+	int flag = 0;
+	const char *target = NULL;
+
+
+	for (uint16_t i = 2; i <= tok_count; ++i) {
+		const char *tk = embeddedCliGetToken(args, i);
+		if (strcmp(tk, ">") == 0) flag = 1;
+		else if (strcmp(tk, ">>") == 0) flag = 0;
+		else target = tk;
+	}
+
+	if (!target) {
+		embeddedCliPrint(cli, "echo: missing operand\r\n");
+		return;
+	}
+
+    const char *filename = embeddedCliGetToken(args, 3);
+    const char *text     = embeddedCliGetToken(args, 1);
+
+    if(flag) {
+    	res = f_open(&file, filename, FA_CREATE_ALWAYS | FA_WRITE);
+    	if (res != FR_OK) {
+			snprintf(msg, sizeof(msg), "echo: cannot open '%s' (%d)\r\n", filename, res);
+			embeddedCliPrint(cli, msg);
+			return;
+    	}
+
+	f_write(&file, text, strlen(text), &bw);
+	f_write(&file, "\r\n", 2, &bw);
+	f_close(&file);
+    }else {
+        res = f_open(&file, filename, FA_OPEN_APPEND | FA_WRITE);
+        if (res != FR_OK) {
+            snprintf(msg, sizeof(msg), "echo: cannot open '%s' (%d)\r\n", filename, res);
+            embeddedCliPrint(cli, msg);
+            return;
+        }
+
+        f_write(&file, text, strlen(text), &bw);
+        f_write(&file, "\r\n", 2, &bw);
+        f_close(&file);
+    }
+
 }
 
 static void CMD_Read_eMMC(EmbeddedCli *cli, char *args, void *context){
+	(void)context;
+	char buf[128];
 
-	res = f_open(&file, "test.txt", FA_READ);
-	if (res == FR_OK) {
-	    char buf[32];
-	    UINT br;
-	    f_read(&file, buf, sizeof(buf) - 1, &br);
-	    buf[br] = 0;
-	    embeddedCliPrint(cli, buf);
-	    f_close(&file);
-	} else {
-		embeddedCliPrint(cli, "f_open (read) failed");
+	uint16_t tok_count = embeddedCliGetTokenCount(args);
+	if (tok_count < 1) {
+		embeddedCliPrint(cli, "Usage: cat [file]\r\n");
+		return;
 	}
+
+    const char *filename = embeddedCliGetToken(args, 1);
+
+    res = f_open(&file, filename, FA_READ);
+    if (res != FR_OK) {
+        char msg[128];
+        snprintf(msg, sizeof(msg),
+                 "cat: %s: No such file or directory\r\n", filename);
+        embeddedCliPrint(cli, msg);
+        return;
+    }
+
+    for (;;) {
+        res = f_read(&file, buf, sizeof(buf) - 1, &bw);
+        if (res != FR_OK || bw == 0) break;
+
+        buf[bw] = '\0';
+        embeddedCliPrint(cli, buf);
+    }
+
+    f_close(&file);
+    embeddedCliPrint(cli, "\r\n");
 
 }
 
 static void CMD_List(EmbeddedCli *cli, char *args, void *context) {
     FRESULT fr;
-    DIR dir;
-    FILINFO fno;
 
     char path[256];
     char msg[320];
@@ -467,6 +556,8 @@ static void CMD_List(EmbeddedCli *cli, char *args, void *context) {
 
 static void CMD_Change_Directory(EmbeddedCli *cli, char *args, void *context){
     (void)context;
+    char msg[128];
+
     uint16_t n = embeddedCliGetTokenCount(args);
     if (n < 1) {
         f_chdir("0:/");
@@ -476,7 +567,6 @@ static void CMD_Change_Directory(EmbeddedCli *cli, char *args, void *context){
     const char *path = embeddedCliGetToken(args, 1);
     FRESULT res = f_chdir(path);
     if (res != FR_OK) {
-        char msg[128];
         snprintf(msg, sizeof(msg), "cd: %s: No such file or directory\r\n", path);
         embeddedCliPrint(cli, msg);
     }
@@ -491,6 +581,75 @@ static void CMD_Print_Working_Directory(EmbeddedCli *cli, char *args, void *cont
         embeddedCliPrint(cli, buf), embeddedCliPrint(cli, "\r\n");
     else
         embeddedCliPrint(cli, "(error reading current directory)\r\n");
+}
+
+static void CMD_Remove(EmbeddedCli *cli, char *args, void *context){
+	(void)context;
+	char buf[256];
+
+	uint16_t tok_count = embeddedCliGetTokenCount(args);
+	if (tok_count < 1) {
+		embeddedCliPrint(cli, "Usage: rm [-r] [-f] <path>\r\n");
+		return;
+	}
+
+	int flag_r = 0, flag_f = 0;
+	const char *target = NULL;
+
+
+	for (uint16_t i = 1; i <= tok_count; ++i) {
+		const char *tk = embeddedCliGetToken(args, i);
+		if (strcmp(tk, "-r") == 0) flag_r = 1;
+		else if (strcmp(tk, "-f") == 0) flag_f = 1;
+		else target = tk;
+	}
+
+	if (!target) {
+		embeddedCliPrint(cli, "rm: missing operand\r\n");
+		return;
+	}
+
+	FRESULT fr = f_stat(target, &fno);
+
+	if (fr == FR_NO_FILE) {
+		if (!flag_f) {
+			snprintf(buf,sizeof(buf), "rm: cannot remove '%s': No such file or directory\r\n", target);
+			embeddedCliPrint(cli, buf);
+		}
+		return;
+	}
+
+	if (fr != FR_OK) {
+		snprintf(buf,sizeof(buf), "rm: error accessing '%s' (%d)\r\n", target, fr);
+		embeddedCliPrint(cli, buf);
+		return;
+	}
+
+	if (fno.fattrib & AM_DIR) {
+
+		if (flag_r) {
+			fr = delete_recursive(target);
+			if (fr != FR_OK && !flag_f){
+				snprintf(buf,sizeof(buf), "rm: failed to remove '%s' (%d)\r\n", target, fr);
+				embeddedCliPrint(cli, buf);
+			}
+		} else {
+			fr = f_unlink(target);
+			if (fr == FR_DENIED && !flag_r) {
+				snprintf(buf,sizeof(buf), "rm: cannot remove '%s': Directory not empty\r\n", target);
+				embeddedCliPrint(cli, buf);
+			} else if (fr != FR_OK && !flag_f) {
+				snprintf(buf,sizeof(buf), "rm: failed to remove '%s' (%d)\r\n", target, fr);
+				embeddedCliPrint(cli, buf);
+			}
+		}
+	} else {
+		fr = f_unlink(target);
+		if (fr != FR_OK && !flag_f){
+			snprintf(buf,sizeof(buf), "rm: failed to remove '%s' (%d)\r\n", target, fr);
+			embeddedCliPrint(cli, buf);
+		}
+	}
 }
 /*************************************************
  *                  End CMD List                 *
