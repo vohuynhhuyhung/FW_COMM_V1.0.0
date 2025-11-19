@@ -27,12 +27,17 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN Includes */
+#include "FreeRTOS.h"
+#include "usbd_rndis.h"
+#include "queuex.h"
 
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+static RNDIS_USB_STATISTIC_t rndis_statistic;
+extern queue_handle_t      tcpQueue;
+extern queue_handle_t      usbQueue;
 /* USER CODE END PV */
 
 /* USER CODE BEGIN PFP */
@@ -55,6 +60,69 @@ USBD_HandleTypeDef hUsbDeviceHS;
  */
 /* USER CODE BEGIN 1 */
 
+void usb_init( void )
+{
+   // force enum
+//   usb_forceHostEnum();
+
+   // Init Device Library, add supported class and start the library.
+   if( USBD_Init(&hUsbDeviceHS, &HS_Desc, DEVICE_HS) != USBD_OK )
+   {
+      Error_Handler();
+   }
+   if( USBD_RegisterClass(&hUsbDeviceHS, USBD_RNDIS_getClass() ) != USBD_OK )
+   {
+      Error_Handler();
+   }
+   if( USBD_Start(&hUsbDeviceHS) != USBD_OK )
+   {
+      Error_Handler();
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Called if a complete frame has been received.
+///
+/// \param     [in]  const char *data
+/// \param     [in]  int size
+///
+/// \return    none
+void on_usbOutRxPacket(const char *data, int size)
+{
+   rndis_statistic.counterRxFrame++;
+   rndis_statistic.counterRxData+=(uint32_t)size;
+   queue_enqueue( (uint8_t*)data, size, &usbQueue );
+   USBD_RNDIS_setBuffer( queue_getHeadBuffer( &usbQueue ) );
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Called if a frame has been send.
+///
+/// \param     none
+///
+/// \return    none
+void on_usbInTxCplt( void )
+{
+   queue_dequeue(&tcpQueue);
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Start a new usb transmission.
+///
+/// \param     [in]  uint8_t* dpointer
+/// \param     [in]  uint16_t length
+///
+/// \return    none
+uint8_t usb_output( uint8_t* dpointer, uint16_t length )
+{
+   if(!USBD_RNDIS_send(dpointer, length))
+   {
+      return 0;
+   }
+   rndis_statistic.counterTxFrame++;
+   rndis_statistic.counterTxData+=(uint32_t)length;
+   return 1;
+}
 /* USER CODE END 1 */
 
 /**

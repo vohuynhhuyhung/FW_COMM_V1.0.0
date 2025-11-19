@@ -63,7 +63,16 @@ USB_DEVICE/App/usb_device.o: ../USB_DEVICE/App/usb_device.c \
  ../USB_DEVICE/App/usbd_desc.h \
  ../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  ../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../USB_DEVICE/App/usbd_cdc_if.h
+ ../USB_DEVICE/App/usbd_cdc_if.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/FreeRTOS.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS_Config/FreeRTOSConfig.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/projdefs.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/portable.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/deprecated_definitions.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/mpu_wrappers.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/ThirdParty/RNDIS/usbd_rndis.h \
+ D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/ThirdParty/RNDIS/queuex.h
 ../USB_DEVICE/App/usb_device.h:
 ../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h745xx.h:
@@ -130,3 +139,12 @@ USB_DEVICE/App/usb_device.o: ../USB_DEVICE/App/usb_device.c \
 ../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
 ../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../USB_DEVICE/App/usbd_cdc_if.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/FreeRTOS.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS_Config/FreeRTOSConfig.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/projdefs.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/portable.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/deprecated_definitions.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS/FreeRTOS-Kernel/include/mpu_wrappers.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/ThirdParty/RNDIS/usbd_rndis.h:
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/ThirdParty/RNDIS/queuex.h:

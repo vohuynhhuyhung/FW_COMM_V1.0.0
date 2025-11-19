@@ -14,6 +14,7 @@ RM := rm -rf
 -include Middlewares/ST/STM32_USB_Device_Library/subdir.mk
 -include Drivers/STM32H7xx_HAL_Driver/subdir.mk
 -include Dev/Util/RingBuffer/subdir.mk
+-include Dev/ThirdParty/printf-master/subdir.mk
 -include Dev/ThirdParty/libcsp/src/transport/subdir.mk
 -include Dev/ThirdParty/libcsp/src/rtable/subdir.mk
 -include Dev/ThirdParty/libcsp/src/interfaces/subdir.mk
@@ -22,10 +23,15 @@ RM := rm -rf
 -include Dev/ThirdParty/libcsp/src/arch/freertos/subdir.mk
 -include Dev/ThirdParty/libcsp/src/arch/subdir.mk
 -include Dev/ThirdParty/libcsp/src/subdir.mk
+-include Dev/ThirdParty/RNDIS/subdir.mk
 -include Dev/ThirdParty/FatFS/source/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/MemMang/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM7/r0p1/subdir.mk
 -include Dev/OS/FreeRTOS/FreeRTOS-Kernel/subdir.mk
+-include Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities/subdir.mk
+-include Dev/OS/FreeRTOS-Plus-TCP/portable/NetworkInterface/HAL_RNDIS_STM32F411/subdir.mk
+-include Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/subdir.mk
+-include Dev/OS/FreeRTOS-Plus-TCP/subdir.mk
 -include Dev/Devices/IS66WVS4M8BLL/subdir.mk
 -include Dev/CLI_Terminal/CLI_Src/subdir.mk
 -include Dev/CLI_Terminal/CLI_Setup/subdir.mk

@@ -1,0 +1,3 @@
+../Dev/ThirdParty/RNDIS/dnsserver.c:123:6:dnsserver_init	24	static
+../Dev/ThirdParty/RNDIS/dnsserver.c:150:6:dnsserver_deinit	8	static
+../Dev/ThirdParty/RNDIS/dnsserver.c:166:13:dnsserver_handle	200	static,ignoring_inline_asm

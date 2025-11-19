@@ -1,0 +1,12 @@
+../Dev/ThirdParty/RNDIS/dhcpserver.c:163:6:dhcpserver_init	32	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:195:6:dhcpserver_deinit	8	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:211:13:dhcpserver_handle	104	static,ignoring_inline_asm
+../Dev/ThirdParty/RNDIS/dhcpserver.c:415:25:dhcpserver_lookupIp	24	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:438:25:dhcpserver_lookupMac	24	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:462:25:dhcpserver_lookupRegister	24	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:486:25:dhcpserver_lookupFree	16	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:510:13:dhcpserver_lookupDelete	16	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:526:13:dhcpserver_lookupSetMac	16	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:542:16:dhcpserver_lookupFreeObj	16	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:570:13:dhcpserver_fillOptions	32	static
+../Dev/ThirdParty/RNDIS/dhcpserver.c:638:17:dhcpserver_findOption	24	static

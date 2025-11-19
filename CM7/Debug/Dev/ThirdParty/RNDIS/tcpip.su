@@ -1,0 +1,15 @@
+../Dev/ThirdParty/RNDIS/tcpip.c:140:6:tcpip_init	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:159:6:tcpip_deinit	8	static
+../Dev/ThirdParty/RNDIS/tcpip.c:176:6:vApplicationIPNetworkEventHook	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:208:13:uxRand	8	static
+../Dev/ThirdParty/RNDIS/tcpip.c:219:19:xApplicationGetRandomNumber	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:236:17:ulApplicationGetNextSequenceNumber	24	static
+../Dev/ThirdParty/RNDIS/tcpip.c:365:9:tcpip_output	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:393:13:tcpip_macTask	40	static
+../Dev/ThirdParty/RNDIS/tcpip.c:490:13:tcpip_invokeMacTask	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:510:6:vApplicationMallocFailedHook	4	static
+../Dev/ThirdParty/RNDIS/tcpip.c:526:6:vApplicationPingReplyHook	16	static
+../Dev/ThirdParty/RNDIS/tcpip.c:553:13:tcpip_rngInit	8	static
+../Dev/ThirdParty/RNDIS/tcpip.c:564:13:tcpip_rngDeInit	4	static
+../Dev/ThirdParty/RNDIS/tcpip.c:575:17:tcpip_getRandomNumber	8	static
+../Dev/ThirdParty/RNDIS/tcpip.c:587:9:tcpip_enqueue	24	static

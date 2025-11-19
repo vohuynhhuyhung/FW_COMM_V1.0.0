@@ -1,0 +1,2 @@
+../Dev/OS/FreeRTOS-Plus-TCP/portable/NetworkInterface/HAL_RNDIS_STM32F411/NetworkInterface.c:68:12:xNetworkInterfaceInitialise	4	static
+../Dev/OS/FreeRTOS-Plus-TCP/portable/NetworkInterface/HAL_RNDIS_STM32F411/NetworkInterface.c:81:12:xNetworkInterfaceOutput	16	static

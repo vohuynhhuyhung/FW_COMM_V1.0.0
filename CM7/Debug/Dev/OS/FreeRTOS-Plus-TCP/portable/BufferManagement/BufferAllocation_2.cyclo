@@ -1,0 +1,8 @@
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:96:12:xNetworkBuffersInitialise	6
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:158:11:pucGetNetworkBuffer	5
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:197:6:vReleaseNetworkBuffer	2
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:210:29:pxGetNetworkBufferWithDescriptor	11
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:313:6:vReleaseNetworkBufferAndDescriptor	4
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:358:13:uxGetNumberOfFreeNetworkBuffers	1
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:364:13:uxGetMinimumFreeNetworkBuffers	1
+../Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement/BufferAllocation_2.c:370:29:pxResizeNetworkBufferWithDescriptor	3

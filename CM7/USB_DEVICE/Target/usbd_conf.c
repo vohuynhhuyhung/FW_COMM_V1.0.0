@@ -102,7 +102,7 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
     __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
 
     /* Peripheral interrupt init */
-    HAL_NVIC_SetPriority(OTG_HS_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(OTG_HS_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(OTG_HS_IRQn);
   /* USER CODE BEGIN USB_OTG_HS_MspInit 1 */
 
@@ -376,8 +376,11 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
   /* USER CODE BEGIN TxRx_HS_Configuration */
   HAL_PCDEx_SetRxFiFo(&hpcd_USB_OTG_HS, 0x200);
-  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 0, 0x80);
-  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 1, 0x174);
+//  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 0, 0x80);
+//  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 1, 0x174);
+  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 0, 64);
+  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 1, 16);
+  HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_HS, 2, 512);
   /* USER CODE END TxRx_HS_Configuration */
   }
   return USBD_OK;

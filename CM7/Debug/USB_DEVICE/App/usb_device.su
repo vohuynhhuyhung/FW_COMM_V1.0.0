@@ -1,1 +1,5 @@
-../USB_DEVICE/App/usb_device.c:64:6:MX_USB_DEVICE_Init	8	static
+../USB_DEVICE/App/usb_device.c:63:6:usb_init	8	static
+../USB_DEVICE/App/usb_device.c:90:6:on_usbOutRxPacket	16	static
+../USB_DEVICE/App/usb_device.c:104:6:on_usbInTxCplt	8	static
+../USB_DEVICE/App/usb_device.c:116:9:usb_output	16	static
+../USB_DEVICE/App/usb_device.c:132:6:MX_USB_DEVICE_Init	8	static

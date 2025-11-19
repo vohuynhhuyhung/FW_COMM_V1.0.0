@@ -41,6 +41,11 @@
 #include "can.h"
 #include "adc_driver.h"
 
+#include "queuex.h"
+#include "tcpip.h"
+#include "dhcpserver.h"
+#include "telnet.h"
+
 #include "IS66WVS4M8BLL.h"
 
 
@@ -95,6 +100,9 @@ volatile TaskHandle_t sWdTask = NULL;
 //    .dma_stream_rx = LL_DMA_STREAM_1, // Stream 1 cho RX
 //    .dma_channel = LL_DMAMUX_CHANNEL_1 // Channel 1 chung
 //};
+
+queue_handle_t tcpQueue;
+queue_handle_t usbQueue;
 
 /* USER CODE END PV */
 
@@ -205,10 +213,16 @@ static void USB_HS_Task( void * parameters )
 //    }
 //}
 //
+
 static void UsbInitTask(void *pv)
 {
-    MX_USB_DEVICE_Init();
-    vTaskDelete(NULL);
+	usb_init();
+    for(;;)
+    {
+       queue_manager( &tcpQueue );
+       queue_manager( &usbQueue );
+       vTaskDelay(1);
+    }
 }
 
 extern csp_conf_t csp_conf;
@@ -448,7 +462,7 @@ Error_Handler();
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_SDMMC1_MMC_Init();
-  MX_USB_DEVICE_Init();
+//  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
   CDC_RingBuffer_Init();
@@ -467,10 +481,23 @@ Error_Handler();
   csp_rtable_set(1, CSP_ID_HOST_SIZE, &can_iface, CSP_NO_VIA_ADDRESS);
 //  SRAM_Initialize(&IS66WV);
 
+  tcpip_init();
+  telnet_server_init();
+
+  // Set the queue on the tcpip stack io
+  tcpQueue.messageDirection  = TCP_TO_USB;
+  tcpQueue.output            = usb_output;
+  queue_init(&tcpQueue);
+
+  // Set the queue on the usb io
+  usbQueue.messageDirection   = USB_TO_TCP;
+  usbQueue.output             = tcpip_output;
+  queue_init(&usbQueue);
+
   xTaskCreate(UsbInitTask,		"USB_Init",				configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
   xTaskCreate(blink,			"Blink",				configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
   xTaskCreate(CLI_Polling_Task, "CLI_Polling_Task",		configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 1U, NULL);
-  xTaskCreate(USB_HS_Task,		"USB_HS_Task",			configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
+//  xTaskCreate(USB_HS_Task,		"USB_HS_Task",			configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
 //  xTaskCreate(USB_FS_Task,		"USB_FS_Task",			configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
 //  xTaskCreate(csp_tx_task, 		"csp_can_tx", 			configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 3U, NULL);
 //  xTaskCreate(csp_rx_task, 		"csp_can_rx", 			configMINIMAL_STACK_SIZE * 10, 	NULL, configMAX_PRIORITIES - 1U, NULL);

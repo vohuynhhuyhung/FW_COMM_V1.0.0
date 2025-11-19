@@ -64,6 +64,32 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/BSP/SPI}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/FatFS/source}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/FatFS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/stm32_fsdev}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/net}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/cdc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/lib/rt-thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/netif}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/compat}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/RNDIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/printf-master}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1998200607" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
@@ -113,6 +139,32 @@
 									<listOptionValue builtIn="false" value="../USB_DEVICE/Target"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/stm32_fsdev}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/net}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/cdc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/lib/rt-thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/netif}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/compat}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/RNDIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/printf-master}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.320555526" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -140,11 +192,11 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
-						<entry excluding="ThirdParty/FatFS/documents/doc|ThirdParty/FatFS/documents/res|ThirdParty/libcsp/utils|ThirdParty/libcsp/src/drivers/usart|ThirdParty/libcsp/src/rtable/csp_rtable_static.c|ThirdParty/libcsp/examples|ThirdParty/libcsp/src/arch/posix|ThirdParty/libcsp/src/arch/windows|Util/HAL_Delay|ThirdParty/libcsp/src/drivers/can/can_socketcan.c|Util/Tick|Driver/UART_DMA|ThirdParty/libcsp/doc|ThirdParty/libcsp/src/bindings|BSP/UART_DMA|ThirdParty/libcsp/src/arch/macosx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Dev"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
+						<entry excluding="ThirdParty/lwip/test|ThirdParty/tinyusb/hw|ThirdParty/tinyusb/src/portable/wch|ThirdParty/tinyusb/src/portable/valentyusb|ThirdParty/tinyusb/src/portable/ti|ThirdParty/tinyusb/src/portable/template|ThirdParty/tinyusb/src/portable/synopsys|ThirdParty/tinyusb/src/portable/sunxi|ThirdParty/tinyusb/src/portable/sony|ThirdParty/tinyusb/src/portable/renesas|ThirdParty/tinyusb/src/portable/raspberrypi|ThirdParty/tinyusb/src/portable/ohci|ThirdParty/tinyusb/src/portable/nxp|ThirdParty/tinyusb/src/portable/nuvoton|ThirdParty/tinyusb/src/portable/nordic|ThirdParty/tinyusb/src/portable/mindmotion|ThirdParty/tinyusb/src/portable/microchip|ThirdParty/tinyusb/src/portable/mentor|ThirdParty/tinyusb/src/portable/espressif|ThirdParty/tinyusb/src/portable/ehci|ThirdParty/tinyusb/src/portable/dialog|ThirdParty/tinyusb/src/portable/chipidea|ThirdParty/tinyusb/src/portable/bridgetek|ThirdParty/tinyusb/src/portable/analog|ThirdParty/tinyusb/hw/bsp|ThirdParty/tinyusb/lib/SEGGER_RTT|ThirdParty/tinyusb/lib/fatfs|ThirdParty/tinyusb/lib/embedded-cli|ThirdParty/tinyusb/examples|ThirdParty/tinyusb/test|ThirdParty/tinyusb/tools|ThirdParty/tinyusb/docs|ThirdParty/FatFS/documents/doc|ThirdParty/FatFS/documents/res|ThirdParty/libcsp/utils|ThirdParty/libcsp/src/drivers/usart|ThirdParty/libcsp/src/rtable/csp_rtable_static.c|ThirdParty/libcsp/examples|ThirdParty/libcsp/src/arch/posix|ThirdParty/libcsp/src/arch/windows|Util/HAL_Delay|ThirdParty/libcsp/src/drivers/can/can_socketcan.c|Util/Tick|Driver/UART_DMA|ThirdParty/libcsp/doc|ThirdParty/libcsp/src/bindings|BSP/UART_DMA|ThirdParty/libcsp/src/arch/macosx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Dev"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="USB_DEVICE"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -205,6 +257,32 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/BSP/SPI}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/FatFS/source}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/FatFS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/stm32_fsdev}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/net}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/cdc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/lib/rt-thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/netif}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/compat}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/RNDIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/printf-master}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1678211828" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
@@ -260,6 +338,32 @@
 									<listOptionValue builtIn="false" value="../USB_DEVICE/Target"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/stm32_fsdev}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable/st}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/typec}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/net}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src/class/cdc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/tinyusb/lib/rt-thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/netif}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip/src/include/compat}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/lwip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/RNDIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/ThirdParty/printf-master}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable/Compiler}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/portable}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Dev/OS/FreeRTOS-Plus-TCP/tools}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1503103256" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -287,11 +391,11 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
-						<entry excluding="ThirdParty/FatFS/documents/doc|ThirdParty/FatFS/documents/res|ThirdParty/libcsp/utils|ThirdParty/libcsp/src/drivers/usart|ThirdParty/libcsp/src/rtable/csp_rtable_static.c|ThirdParty/libcsp/examples|ThirdParty/libcsp/src/arch/posix|ThirdParty/libcsp/src/arch/windows|Util/HAL_Delay|ThirdParty/libcsp/src/drivers/can/can_socketcan.c|Util/Tick|Driver/UART_DMA|ThirdParty/libcsp/doc|ThirdParty/libcsp/src/bindings|BSP/UART_DMA|ThirdParty/libcsp/src/arch/macosx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Dev"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
+						<entry excluding="ThirdParty/lwip/test|ThirdParty/tinyusb/hw|ThirdParty/tinyusb/src/portable/wch|ThirdParty/tinyusb/src/portable/valentyusb|ThirdParty/tinyusb/src/portable/ti|ThirdParty/tinyusb/src/portable/template|ThirdParty/tinyusb/src/portable/synopsys|ThirdParty/tinyusb/src/portable/sunxi|ThirdParty/tinyusb/src/portable/sony|ThirdParty/tinyusb/src/portable/renesas|ThirdParty/tinyusb/src/portable/raspberrypi|ThirdParty/tinyusb/src/portable/ohci|ThirdParty/tinyusb/src/portable/nxp|ThirdParty/tinyusb/src/portable/nuvoton|ThirdParty/tinyusb/src/portable/nordic|ThirdParty/tinyusb/src/portable/mindmotion|ThirdParty/tinyusb/src/portable/microchip|ThirdParty/tinyusb/src/portable/mentor|ThirdParty/tinyusb/src/portable/espressif|ThirdParty/tinyusb/src/portable/ehci|ThirdParty/tinyusb/src/portable/dialog|ThirdParty/tinyusb/src/portable/chipidea|ThirdParty/tinyusb/src/portable/bridgetek|ThirdParty/tinyusb/src/portable/analog|ThirdParty/tinyusb/hw/bsp|ThirdParty/tinyusb/lib/SEGGER_RTT|ThirdParty/tinyusb/lib/fatfs|ThirdParty/tinyusb/lib/embedded-cli|ThirdParty/tinyusb/examples|ThirdParty/tinyusb/test|ThirdParty/tinyusb/tools|ThirdParty/tinyusb/docs|ThirdParty/FatFS/documents/doc|ThirdParty/FatFS/documents/res|ThirdParty/libcsp/utils|ThirdParty/libcsp/src/drivers/usart|ThirdParty/libcsp/src/rtable/csp_rtable_static.c|ThirdParty/libcsp/examples|ThirdParty/libcsp/src/arch/posix|ThirdParty/libcsp/src/arch/windows|Util/HAL_Delay|ThirdParty/libcsp/src/drivers/can/can_socketcan.c|Util/Tick|Driver/UART_DMA|ThirdParty/libcsp/doc|ThirdParty/libcsp/src/bindings|BSP/UART_DMA|ThirdParty/libcsp/src/arch/macosx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Dev"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="USB_DEVICE"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

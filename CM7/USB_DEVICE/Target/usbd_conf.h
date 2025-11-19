@@ -80,6 +80,22 @@
 #define DEVICE_FS 		0
 #define DEVICE_HS 		1
 
+ /* RNDIS */
+ #define RNDIS_CONTROL_IN_EP      0x80  // wireshark observation: URB_CONTROL_IN not handled in the rndis library
+ #define RNDIS_CONTROL_OUT_EP     0x00  // wireshark observation: URB_CONTROL_OUT not handled in the rndis library
+
+ #define RNDIS_NOTIFICATION_IN_EP 0x81  // wireshark observation: URB_INTERRUPT_IN
+ #define RNDIS_DATA_IN_EP         0x82
+ #define RNDIS_DATA_OUT_EP        0x03
+
+ #define RNDIS_NOTIFICATION_IN_SZ 8u
+ #define RNDIS_DATA_IN_SZ         64u
+ #define RNDIS_DATA_OUT_SZ        64u
+
+ #define USBD_CFG_MAX_NUM         1
+ #define USBD_ITF_MAX_NUM         1
+ #define USB_MAX_STR_DESC_SIZ     64
+
 /**
   * @}
   */

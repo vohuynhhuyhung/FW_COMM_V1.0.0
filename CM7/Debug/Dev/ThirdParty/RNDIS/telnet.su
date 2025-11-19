@@ -1,0 +1,2 @@
+../Dev/ThirdParty/RNDIS/telnet.c:11:13:telnet_server_task	592	static
+../Dev/ThirdParty/RNDIS/telnet.c:92:6:telnet_server_init	24	static

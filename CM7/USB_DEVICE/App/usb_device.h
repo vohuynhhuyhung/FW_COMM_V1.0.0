@@ -81,7 +81,16 @@ void MX_USB_DEVICE_Init(void);
  * -- Insert functions declaration here --
  */
 /* USER CODE BEGIN FD */
-
+void     usb_init                ( void );
+//void     usb_deinit              ( void );
+void     on_usbOutRxPacket       ( const char *data, int size );
+void     on_usbInTxCplt          ( void );
+uint8_t  usb_output              ( uint8_t* dpointer, uint16_t length );
+//void     usb_forceHostEnum       ( void );
+//uint32_t usb_getTxFrames         ( void );
+//uint32_t usb_getTxData           ( void );
+//uint32_t usb_getRxFrames         ( void );
+//uint32_t usb_getRxData           ( void );
 /* USER CODE END FD */
 /**
   * @}

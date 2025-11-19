@@ -1,0 +1,15 @@
+../Dev/ThirdParty/RNDIS/tcpip.c:140:6:tcpip_init	1
+../Dev/ThirdParty/RNDIS/tcpip.c:159:6:tcpip_deinit	1
+../Dev/ThirdParty/RNDIS/tcpip.c:176:6:vApplicationIPNetworkEventHook	3
+../Dev/ThirdParty/RNDIS/tcpip.c:208:13:uxRand	1
+../Dev/ThirdParty/RNDIS/tcpip.c:219:19:xApplicationGetRandomNumber	1
+../Dev/ThirdParty/RNDIS/tcpip.c:236:17:ulApplicationGetNextSequenceNumber	1
+../Dev/ThirdParty/RNDIS/tcpip.c:365:9:tcpip_output	4
+../Dev/ThirdParty/RNDIS/tcpip.c:393:13:tcpip_macTask	4
+../Dev/ThirdParty/RNDIS/tcpip.c:490:13:tcpip_invokeMacTask	2
+../Dev/ThirdParty/RNDIS/tcpip.c:510:6:vApplicationMallocFailedHook	1
+../Dev/ThirdParty/RNDIS/tcpip.c:526:6:vApplicationPingReplyHook	4
+../Dev/ThirdParty/RNDIS/tcpip.c:553:13:tcpip_rngInit	1
+../Dev/ThirdParty/RNDIS/tcpip.c:564:13:tcpip_rngDeInit	1
+../Dev/ThirdParty/RNDIS/tcpip.c:575:17:tcpip_getRandomNumber	1
+../Dev/ThirdParty/RNDIS/tcpip.c:587:9:tcpip_enqueue	2

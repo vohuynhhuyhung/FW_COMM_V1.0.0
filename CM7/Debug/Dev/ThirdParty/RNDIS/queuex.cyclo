@@ -1,0 +1,7 @@
+../Dev/ThirdParty/RNDIS/queuex.c:73:6:queue_init	2
+../Dev/ThirdParty/RNDIS/queuex.c:117:13:queue_manager	5
+../Dev/ThirdParty/RNDIS/queuex.c:153:13:queue_dequeue	3
+../Dev/ThirdParty/RNDIS/queuex.c:196:17:queue_enqueue	4
+../Dev/ThirdParty/RNDIS/queuex.c:253:10:queue_getHeadBuffer	1
+../Dev/ThirdParty/RNDIS/queuex.c:264:10:queue_getTailBuffer	1
+../Dev/ThirdParty/RNDIS/queuex.c:275:9:queue_isFull	2

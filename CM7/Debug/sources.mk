@@ -38,7 +38,12 @@ Dev/Devices/IS66WVS4M8BLL \
 Dev/OS/FreeRTOS/FreeRTOS-Kernel \
 Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM7/r0p1 \
 Dev/OS/FreeRTOS/FreeRTOS-Kernel/portable/MemMang \
+Dev/OS/FreeRTOS-Plus-TCP \
+Dev/OS/FreeRTOS-Plus-TCP/portable/BufferManagement \
+Dev/OS/FreeRTOS-Plus-TCP/portable/NetworkInterface/HAL_RNDIS_STM32F411 \
+Dev/OS/FreeRTOS-Plus-TCP/tools/tcp_utilities \
 Dev/ThirdParty/FatFS/source \
+Dev/ThirdParty/RNDIS \
 Dev/ThirdParty/libcsp/src/arch \
 Dev/ThirdParty/libcsp/src/arch/freertos \
 Dev/ThirdParty/libcsp/src/crypto \
@@ -47,6 +52,7 @@ Dev/ThirdParty/libcsp/src/drivers/can \
 Dev/ThirdParty/libcsp/src/interfaces \
 Dev/ThirdParty/libcsp/src/rtable \
 Dev/ThirdParty/libcsp/src/transport \
+Dev/ThirdParty/printf-master \
 Dev/Util/RingBuffer \
 Drivers/STM32H7xx_HAL_Driver \
 Middlewares/ST/STM32_USB_Device_Library \

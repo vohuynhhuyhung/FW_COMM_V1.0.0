@@ -1,0 +1,7 @@
+../Dev/ThirdParty/RNDIS/queuex.c:73:6:queue_init	24	static,ignoring_inline_asm
+../Dev/ThirdParty/RNDIS/queuex.c:117:13:queue_manager	24	static
+../Dev/ThirdParty/RNDIS/queuex.c:153:13:queue_dequeue	16	static
+../Dev/ThirdParty/RNDIS/queuex.c:196:17:queue_enqueue	32	static
+../Dev/ThirdParty/RNDIS/queuex.c:253:10:queue_getHeadBuffer	16	static
+../Dev/ThirdParty/RNDIS/queuex.c:264:10:queue_getTailBuffer	16	static
+../Dev/ThirdParty/RNDIS/queuex.c:275:9:queue_isFull	16	static

@@ -1,0 +1,8 @@
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_IP.h:233:36:FreeRTOS_min_uint32	1
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_Stream_Buffer.h:71:30:uxStreamBufferSpace	2
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_Stream_Buffer.h:92:30:uxStreamBufferDistance	2
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_Stream_Buffer.h:111:30:uxStreamBufferGetSpace	1
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_Stream_Buffer.h:137:30:uxStreamBufferGetSize	1
+D:/1_WorkSpace/FW/SpaceLiin_IF_BOARD_FW/COMM_HW100/COMM_HW100/CM7/Dev/OS/FreeRTOS-Plus-TCP/include/FreeRTOS_Stream_Buffer.h:185:34:xStreamBufferLessThenEqual	6
+../Dev/OS/FreeRTOS-Plus-TCP/FreeRTOS_Stream_Buffer.c:57:8:uxStreamBufferAdd	10
+../Dev/OS/FreeRTOS-Plus-TCP/FreeRTOS_Stream_Buffer.c:152:8:uxStreamBufferGet	10
